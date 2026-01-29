@@ -21,7 +21,11 @@ body {
     color: #f1f5f9;
   }
 }
-@media (min-width: 480px) {
+
+.overlay {
+  display: none;
+}
+@media (max-width: 640px) {
   /* Overlay layout */
   .overlay {
     position: fixed;
