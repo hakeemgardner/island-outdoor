@@ -1,0 +1,440 @@
+
+        /* CSS Variables & Theming */
+        :root {
+            --color-primary: #11d442;
+            --color-primary-hover: #0ebd3a;
+            --bg-light: #f6f8f6;
+            --bg-dark: #102215;
+            --bg-card-dark: #1a2e1f;
+            --text-primary: #111813;
+            --text-secondary: #61896b;
+            --border-color: #dbe6de;
+            --white: #ffffff;
+            --shadow-color: rgba(0, 0, 0, 0.05);
+            --radius-sm: 0.25rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 0.75rem;
+            --radius-xl: 1rem;
+            --radius-full: 9999px;
+            --font-display: 'Plus Jakarta Sans', 'Noto Sans', sans-serif;
+        }
+
+        /* Dark Mode Variables */
+        html.dark {
+            --bg-body: var(--bg-dark);
+            --bg-card: var(--bg-card-dark);
+            --bg-input: rgba(255, 255, 255, 0.05);
+            --text-main: var(--white);
+            --text-muted: #9ca3af;
+            --border-default: rgba(255, 255, 255, 0.1);
+            --border-input: rgba(255, 255, 255, 0.1);
+            --shadow-color: transparent;
+        }
+
+        /* Light Mode Variables */
+        html:not(.dark) {
+            --bg-body: var(--bg-light);
+            --bg-card: var(--white);
+            --bg-input: var(--white);
+            --text-main: var(--text-primary);
+            --text-muted: var(--text-secondary);
+            --border-default: var(--border-color);
+            --border-input: var(--border-color);
+        }
+
+        /* Reset & Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-display);
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            line-height: 1.5;
+        }
+
+        /* Header */
+        .site-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            white-space: nowrap;
+            border-bottom: 1px solid var(--border-default);
+            padding: 0.75rem 1.5rem;
+            background-color: var(--bg-card);
+            width: 100%;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--text-main);
+        }
+
+        .logo-icon {
+            color: var(--color-primary);
+        }
+
+        .logo-icon span {
+            font-size: 1.875rem;
+            line-height: 1;
+        }
+
+        .brand-name {
+            font-size: 1.125rem;
+            font-weight: 700;
+            line-height: 1.25;
+            letter-spacing: -0.015em;
+            color: var(--text-main);
+        }
+
+        .nav-section {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .main-nav {
+            display: none;
+            align-items: center;
+            gap: 2.25rem;
+        }
+
+        .nav-link {
+            color: var(--text-main);
+            font-size: 0.875rem;
+            font-weight: 500;
+            line-height: 1.5;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--color-primary);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 700;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .btn-login {
+            min-width: 84px;
+            height: 2.5rem;
+            padding: 0 1rem;
+            background-color: #f0f4f1;
+            color: var(--text-primary);
+            border-radius: var(--radius-md);
+            font-size: 0.875rem;
+            line-height: 1.5;
+            letter-spacing: 0.015em;
+        }
+
+        html.dark .btn-login {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Background Decorations */
+        .bg-decoration {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(64px);
+            pointer-events: none;
+        }
+
+        .bg-decoration-top {
+            top: 0;
+            right: 0;
+            transform: translate(50%, -50%);
+            width: 24rem;
+            height: 24rem;
+            background-color: rgba(17, 212, 66, 0.1);
+        }
+
+        .bg-decoration-bottom {
+            bottom: 0;
+            left: 0;
+            transform: translate(-50%, 50%);
+            width: 24rem;
+            height: 24rem;
+            background-color: rgba(17, 212, 66, 0.05);
+        }
+
+        /* Registration Card */
+        .registration-container {
+            width: 100%;
+            max-width: 480px;
+            background-color: var(--bg-card);
+            border-radius: var(--radius-xl);
+            box-shadow: 0 20px 25px -5px var(--shadow-color), 0 8px 10px -6px var(--shadow-color);
+            border: 1px solid var(--border-default);
+            position: relative;
+            z-index: 10;
+            overflow: hidden;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .card-accent {
+            height: 0.5rem;
+            width: 100%;
+            background-color: var(--color-primary);
+        }
+
+        .card-content {
+            padding: 2rem;
+        }
+
+        /* Header Section */
+        .card-header {
+            text-align: center;
+            padding-bottom: 2rem;
+        }
+
+        .card-title {
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 1.25;
+            letter-spacing: -0.025em;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+        }
+
+        .card-subtitle {
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: var(--text-muted);
+        }
+
+        /* Form Styles */
+        .registration-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-label {
+            font-size: 0.875rem;
+            font-weight: 500;
+            line-height: 1.5;
+            color: var(--text-main);
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+            font-size: 1.25rem;
+            pointer-events: none;
+        }
+
+        .form-input {
+            width: 100%;
+            height: 3.5rem;
+            padding: 0 1rem 0 3rem;
+            border: 1px solid var(--border-input);
+            border-radius: var(--radius-lg);
+            background-color: var(--bg-input);
+            color: var(--text-main);
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            transition: all 0.2s ease;
+            outline: none;
+        }
+
+        .form-input::placeholder {
+            color: var(--text-secondary);
+        }
+
+        .form-input:focus {
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(17, 212, 66, 0.2);
+        }
+
+        /* Checkbox */
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.5rem 0.25rem;
+        }
+
+        .checkbox-wrapper {
+            display: flex;
+            align-items: center;
+            height: 1.25rem;
+        }
+
+        .form-checkbox {
+            width: 1.25rem;
+            height: 1.25rem;
+            border: 1px solid var(--border-input);
+            border-radius: 0.25rem;
+            accent-color: var(--color-primary);
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .checkbox-label {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            cursor: pointer;
+        }
+
+        .checkbox-label a {
+            color: var(--color-primary);
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .checkbox-label a:hover {
+            text-decoration: underline;
+        }
+
+        /* Submit Button */
+        .btn-submit {
+            width: 100%;
+            height: 3.5rem;
+            margin-top: 1rem;
+            background-color: var(--color-primary);
+            color: var(--text-primary);
+            border-radius: var(--radius-lg);
+            font-size: 1rem;
+            font-weight: 700;
+            line-height: 1.5;
+            letter-spacing: 0.015em;
+            box-shadow: 0 10px 15px -3px rgba(17, 212, 66, 0.2);
+            border: none;
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+        }
+
+        .btn-submit:hover {
+            opacity: 0.9;
+        }
+
+        /* Login Link Section */
+        .switch-auth {
+            padding-top: 2rem;
+            margin-top: 2rem;
+            text-align: center;
+            border-top: 1px solid var(--border-default);
+        }
+
+        .switch-text {
+            font-size: 0.875rem;
+            color: var(--text-main);
+        }
+
+        .switch-link {
+            color: var(--color-primary);
+            font-weight: 700;
+            text-decoration: none;
+            margin-left: 0.25rem;
+        }
+
+        .switch-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        .site-footer {
+            padding: 2.5rem 1rem;
+            text-align: center;
+        }
+
+        .footer-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+            opacity: 0.4;
+            filter: grayscale(100%);
+        }
+
+        .footer-icons span {
+            font-size: 1.875rem;
+            color: var(--text-main);
+        }
+
+        .footer-text {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        html.dark .footer-text {
+            color: #6b7280;
+        }
+
+        /* Responsive */
+        @media (min-width: 768px) {
+            .site-header {
+                padding: 0.75rem 2.5rem;
+            }
+
+            .main-nav {
+                display: flex;
+            }
+
+            .card-content {
+                padding: 2.5rem;
+            }
+
+            .card-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Utility for dark mode text adjustments */
+        html.dark .nav-link {
+            color: #d1d5db;
+        }
+   
